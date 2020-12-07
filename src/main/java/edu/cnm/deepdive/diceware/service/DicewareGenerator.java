@@ -22,6 +22,10 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service component that constructs passphrases by selecting (at random) from a {@link
+ * java.util.Collection Collection&lt;String&gt;} populated from a {@link WordProvider}.
+ */
 @Service
 public class DicewareGenerator implements PassphraseGenerator {
 
