@@ -1,5 +1,5 @@
 /*
- *  Copyright 2020 Deep Dive Coding/CNM Ingenuity
+ *  Copyright 2020 CNM Ingenuity, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -40,6 +40,8 @@ public class DicewareController {
   private static final String DEFAULT_LENGTH = "6";
   private static final String DELIMITER_PARAMETER = "delimiter";
   private static final String DEFAULT_DELIMITER = ",";
+  private static final String WORDS_KEY = "words";
+  private static final String HTML_TEMPLATE = "passphrase";
 
   private final PassphraseGenerator generator;
 
@@ -75,15 +77,15 @@ public class DicewareController {
    * associated with {@code application/json} or {@code text/plain}.
    *
    * @param length number of words in passphrase.
-   * @param model injected container for model content rendered by {@code view}.
+   * @param model  injected container for model content rendered by {@code view}.
    * @return view
    */
   @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
   public String get(
       @RequestParam(value = LENGTH_PARAMETER, defaultValue = DEFAULT_LENGTH) int length,
       Model model) {
-    model.addAttribute("words", generator.passphrase(length));
-    return "passphrase";
+    model.addAttribute(WORDS_KEY, generator.passphrase(length));
+    return HTML_TEMPLATE;
   }
 
   /**
@@ -92,7 +94,7 @@ public class DicewareController {
    * value</i> (q-value, or weight) associated (implicitly or explicitly) with {@code text/plain} is
    * higher than that associated with {@code text/html} or {@code application/json}.
    *
-   * @param length number of words in passphrase.
+   * @param length    number of words in passphrase.
    * @param delimiter separator between words in passphrase.
    */
   @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
