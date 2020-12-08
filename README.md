@@ -11,7 +11,7 @@ For more information, see:
 
 _Simple Diceware Service_ was written by Nick Bennett, with Chris Hughes.
 
-Copyright 2020 Deep Dive Coding/CNM Ingenuity, Inc.
+&copy; 2020 CNM Ingenuity, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
